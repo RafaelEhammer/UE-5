@@ -26,7 +26,6 @@ public class Main extends Application
         TextField cels_Text = new TextField();
         TextField Fahr_Text = new TextField();
         Button Fahr_Button = new Button("Convert F -> C");
-
         Label cels_Label = new Label("Grad Celsius");
         Button cels_Button = new Button("Convert C -> F");
 
@@ -63,7 +62,6 @@ public class Main extends Application
                  }
             }
         };
-
        Fahr_Button.setOnMouseClicked(handler2);
        cels_Button.setOnMouseClicked(handler);
        vbox.getChildren().addAll(cels_Label, cels_Text, Fahr_Label, Fahr_Text, cels_Button, Fahr_Button);
