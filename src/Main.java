@@ -27,16 +27,35 @@ public class Main extends Application
         TextField Fahr_Text = new TextField();
         Button Fahr_Button = new Button("Convert F -> C");
 
+        Label cels_Label = new Label("Grad Celsius");
+        Button cels_Button = new Button("Convert C -> F");
+
         EventHandler<MouseEvent> handler2 = new EventHandler<MouseEvent>()
         {
+            @Override
+            public void handle (MouseEvent mouseEvent)
+            {
+                try
+                {
+                    double fahr = Double.parseDouble(Fahr_Text.getText());
+                    double cels = (fahr - 32) / 1.8;
+                    cels_Text.setText(""+cels);
+                }
+                catch (Exception ignored)
+                {
+
+                }
+            }
+        };
+        EventHandler<MouseEvent> handler = new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent)
             {
                  try
                  {
-                    double fahr = Double.parseDouble(Fahr_Text.getText());
-                    double cels = (fahr - 32) / 1.8;
-                    cels_Text.setText("" + cels);
+                    double cels = Double.parseDouble(cels_Text.getText());
+                    double fahr = cels * 1.8 + 32;
+                    Fahr_Text.setText("" + fahr);
                  }
                  catch (Exception ignored)
                  {
@@ -46,7 +65,8 @@ public class Main extends Application
         };
 
        Fahr_Button.setOnMouseClicked(handler2);
-       vbox.getChildren().addAll(cels_Text, Fahr_Label, Fahr_Text, Fahr_Button);
+       cels_Button.setOnMouseClicked(handler);
+       vbox.getChildren().addAll(cels_Label, cels_Text, Fahr_Label, Fahr_Text, cels_Button, Fahr_Button);
        Scene scene = new Scene(vbox);
        stage.setTitle("UE-5");
        stage.setScene(scene);
